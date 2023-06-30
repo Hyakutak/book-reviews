@@ -1,5 +1,5 @@
-import { SocialButton } from "./styles";
-import { ReactNode } from "react";
+import { SocialButton } from './styles';
+import { ReactNode } from 'react';
 
 interface ButtonProps {
     children: ReactNode

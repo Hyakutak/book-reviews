@@ -6,10 +6,11 @@ export const SocialButton = styled('button', {
     alignItems: 'center',
     gap: '$5',
     padding: '$5 $6',
-    width: '100%',
+    width: '23.25rem',
     background: '$gray600',
     borderRadius: '$md',
     cursor: 'pointer',
+    boxSizing: 'border-box',
 
     'span': {
         color: '$gray200',

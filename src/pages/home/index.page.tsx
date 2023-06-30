@@ -2,10 +2,11 @@ import Image from 'next/image';
 import Logo from '../../../public/Logo.svg';
 import Banner from '../../../public/Banner-login.png';
 import { AsideContent, AsideImage, MainContainer } from './styles';
-import SocialAuth from '@/components/SocialAuth/indes';
+import SocialAuth from '@/components/SocialAuth';
 import IconGoogle from '../../../public/google-icon.svg';
 import IconGthub from '../../../public/icon_github.svg';
 import IconRocket from '../../../public/rocket-icon.svg';
+import { ReactElement } from 'react';
 
 const ButtonsAuth = [
     {
@@ -22,7 +23,7 @@ const ButtonsAuth = [
     }
 ];
 
-export default function Home() {
+export default function Home<NextPageWithLayout>() {
 
     const Buttons = ButtonsAuth.map(({ name, src }) => {
         return (
@@ -52,4 +53,12 @@ export default function Home() {
             </MainContainer>
         </>
     )
+}
+
+Home.getLayout = function getLayout(page: ReactElement) {
+    return (
+        <>
+            {page}
+        </>
+    );
 }

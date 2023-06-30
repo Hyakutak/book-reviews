@@ -4,8 +4,7 @@ export const MainContainer = styled('main', {
     padding: '1.25rem',
     height: '100vh',
     display: 'flex',
-    alignItems: 'center',
-    gap: '12.06rem'
+    alignItems: 'center'
 });
 
 export const AsideImage = styled('aside', {
@@ -26,10 +25,10 @@ export const AsideImage = styled('aside', {
 });
 
 export const AsideContent = styled('aside', {
-    width: '23.25rem',
+    width: 'calc(100% - 598px)',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     gap: '$10',
 
     'header': {
@@ -37,6 +36,7 @@ export const AsideContent = styled('aside', {
         flexDirection: 'column',
         alignItems: 'flex-start',
         gap: '.125rem',
+        width: '23.25rem',
         
         'h2': {
             color: '$gray100',
@@ -52,7 +52,7 @@ export const AsideContent = styled('aside', {
     },
 
     'section': {
-        width: '100%',
+        width: 'fit-content',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
