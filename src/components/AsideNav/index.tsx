@@ -14,7 +14,7 @@ const Nav = [
     {
         name: 'Explorar',
         icon: <Binoculars size={24} />,
-        link: '/'
+        link: '/explorer'
     },
     {
         name: 'Perfil',
