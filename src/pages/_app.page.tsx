@@ -1,4 +1,4 @@
-import { globalStyles } from '@/styles/globals';
+import { MainContainer, globalStyles } from '@/styles/globals';
 import type { AppProps } from 'next/app';
 import { AsideNav } from '@/components/AsideNav';
 import { ReactElement, ReactNode } from 'react';
@@ -21,10 +21,10 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   if(Component.getLayout) return getLayout(<Component {...pageProps} />);
 
   return (
-    <>
+    <MainContainer>
       <AsideNav />
       <Component {...pageProps} />
-    </>
+    </MainContainer>
   );
   
 }

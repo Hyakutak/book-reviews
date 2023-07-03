@@ -1,3 +1,4 @@
+import { styled } from '@stitches/react';
 import { globalCss } from '../../stitches.config';
 
 export const globalStyles = globalCss({
@@ -17,4 +18,8 @@ export const globalStyles = globalCss({
         fontFamily: '$default',
         fontWeight: '$regular'
     }
+});
+
+export const MainContainer = styled('main', {
+    display: 'flex'
 });
