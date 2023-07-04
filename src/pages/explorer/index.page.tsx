@@ -4,7 +4,7 @@ import { ContainerExplorer,
          FilterContainer,
          CardContainer } from './styles';
 import CardExplorer from './(components)/Card';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { api } from '@/lib/axios';
 
 const Filters = [
@@ -42,20 +42,39 @@ const Filters = [
     }
 ]
 
+interface interfaceBook {
+    author: string,
+    cover_url: string,
+    id: string,
+    name: string
+}
+
 export default function Explorer() {
+
+    const [ books, setBooks] = useState<interfaceBook[]>([]);
 
     const FilterList = Filters.map(({ name, isActive }) => {
         return <button key={name} className={isActive ? 'active' : ''}>{ name }</button>
     });
 
     async function fetchBooks() {
-        const response = await api.get('/books')
-        console.log(response.data)
+        const response = await api.get('/books');
+        const allBooks = response.data;
+        const booksArray:interfaceBook[] = [];
+        allBooks.forEach((book: interfaceBook) => {
+            const {author, cover_url, id, name} = book;            
+            booksArray.push({author, cover_url, id, name});
+        });
+        setBooks(booksArray);
     }
 
     useEffect(() => {
         fetchBooks();
-    }, [])
+    }, []);
+
+    const cardsBook = books.map((book) => {
+        return <CardExplorer key={book.id} {...book} />
+    });
 
     return(
         <ContainerExplorer>
@@ -73,9 +92,7 @@ export default function Explorer() {
                 { FilterList }
             </FilterContainer>
             <CardContainer>
-                <CardExplorer />
-                <CardExplorer />
-                <CardExplorer />
+                { cardsBook }
             </CardContainer>
         </ContainerExplorer>
     );

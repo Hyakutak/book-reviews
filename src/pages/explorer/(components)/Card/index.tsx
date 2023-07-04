@@ -3,14 +3,22 @@ import ImageBook from '../../../../../public/prov/Book.svg';
 import { Card } from './styles';
 import { Star } from 'phosphor-react';
 
-export default function CardExplorer() {
+interface interfaceBook {
+    author: string,
+    cover_url: string,
+    id: string,
+    name: string
+}
+
+export default function CardExplorer({ name, author, cover_url }: interfaceBook) {
+    console.log(cover_url)
     return(
         <Card>
-            <Image src={ImageBook} alt='Book' />
+            <Image src={cover_url} alt={name} width={200} height={100} />
             <section>
                 <header>
-                    <h2>A revolução dos bichos</h2>
-                    <p>George Orwell</p>
+                    <h2>{ name }</h2>
+                    <p>{ author }</p>
                 </header>
                 <footer>
                     <Star size={16} weight='fill' />
