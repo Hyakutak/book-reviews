@@ -1,5 +1,9 @@
 import { Binoculars, MagnifyingGlass } from 'phosphor-react';
-import { ContainerExplorer, InputFilter, FilterContainer } from './styles';
+import { ContainerExplorer,
+         InputFilter,
+         FilterContainer,
+         CardContainer } from './styles';
+import CardExplorer from './(components)/Card';
 
 const Filters = [
     {
@@ -57,6 +61,11 @@ export default function Explorer() {
             <FilterContainer>
                 { FilterList }
             </FilterContainer>
+            <CardContainer>
+                <CardExplorer />
+                <CardExplorer />
+                <CardExplorer />
+            </CardContainer>
         </ContainerExplorer>
     );
 }

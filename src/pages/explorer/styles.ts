@@ -76,6 +76,14 @@ export const FilterContainer = styled('section', {
         border: '1px solid $purple100',
         fontSize: '$md',
         fontWeight: '$regular',
-        fontFamily: '$default'
+        fontFamily: '$default',
+        cursor: 'pointer'
     }
+});
+
+export const CardContainer = styled('section', {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '$5',
+    marginTop: '3rem'
 });
