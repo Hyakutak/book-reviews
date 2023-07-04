@@ -4,6 +4,8 @@ import { ContainerExplorer,
          FilterContainer,
          CardContainer } from './styles';
 import CardExplorer from './(components)/Card';
+import { useEffect } from 'react';
+import { api } from '@/lib/axios';
 
 const Filters = [
     {
@@ -44,7 +46,16 @@ export default function Explorer() {
 
     const FilterList = Filters.map(({ name, isActive }) => {
         return <button key={name} className={isActive ? 'active' : ''}>{ name }</button>
-    })
+    });
+
+    async function fetchBooks() {
+        const response = await api.get('/books')
+        console.log(response.data)
+    }
+
+    useEffect(() => {
+        fetchBooks();
+    }, [])
 
     return(
         <ContainerExplorer>

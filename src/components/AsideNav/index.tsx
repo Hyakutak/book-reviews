@@ -29,7 +29,7 @@ export function AsideNav() {
 
     const navLinks = Nav.map(({ name, icon, link }) => {
         return (
-            <Link href={link} className={pathname == link ? "active" : ""}>
+            <Link key={name} href={link} className={pathname == link ? "active" : ""}>
                 <li>
                     { icon }
                     <span>{ name }</span>
