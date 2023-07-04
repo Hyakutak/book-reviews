@@ -2,6 +2,7 @@ import { styled } from '@stitches/react';
 
 export const ContainerExplorer = styled('article', {
     width: 'calc((100% - 14.5rem) - 12rem)',
+    maxWidth: '75rem',
     margin: '0 auto',
     marginTop: '4.5rem',
 

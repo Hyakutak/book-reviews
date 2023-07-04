@@ -1,11 +1,12 @@
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
+import { api } from '@/lib/axios';
 import { Binoculars, MagnifyingGlass } from 'phosphor-react';
 import { ContainerExplorer,
          InputFilter,
          FilterContainer,
          CardContainer } from './styles';
 import CardExplorer from './(components)/Card';
-import { useEffect, useState } from 'react';
-import { api } from '@/lib/axios';
 
 const Filters = [
     {
@@ -51,29 +52,19 @@ interface interfaceBook {
 
 export default function Explorer() {
 
-    const [ books, setBooks] = useState<interfaceBook[]>([]);
+    const {data: books, isLoading} = useQuery([], async () => {
+        const response = await api.get('/books');
+        return response.data;
+    });
+
+    const cardsBook = isLoading ? (
+        <span>Carregando</span>
+    ) : (
+        books.map((book: interfaceBook) => <CardExplorer key={book.id} {...book} />) 
+    );
 
     const FilterList = Filters.map(({ name, isActive }) => {
         return <button key={name} className={isActive ? 'active' : ''}>{ name }</button>
-    });
-
-    async function fetchBooks() {
-        const response = await api.get('/books');
-        const allBooks = response.data;
-        const booksArray:interfaceBook[] = [];
-        allBooks.forEach((book: interfaceBook) => {
-            const {author, cover_url, id, name} = book;            
-            booksArray.push({author, cover_url, id, name});
-        });
-        setBooks(booksArray);
-    }
-
-    useEffect(() => {
-        fetchBooks();
-    }, []);
-
-    const cardsBook = books.map((book) => {
-        return <CardExplorer key={book.id} {...book} />
     });
 
     return(

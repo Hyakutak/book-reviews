@@ -11,10 +11,9 @@ interface interfaceBook {
 }
 
 export default function CardExplorer({ name, author, cover_url }: interfaceBook) {
-    console.log(cover_url)
     return(
         <Card>
-            <Image src={cover_url} alt={name} width={200} height={100} />
+            <Image src={ImageBook} alt={name} />
             <section>
                 <header>
                     <h2>{ name }</h2>

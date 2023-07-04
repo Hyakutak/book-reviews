@@ -22,7 +22,9 @@ export const Card = styled('div', {
             'h2': {
                 lineHeight: '$base',
                 fontSize: '$md',
-                fontWeight: '$bold'
+                fontWeight: '$bold',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
             },
             'p': {
                 color: '$gray400',
