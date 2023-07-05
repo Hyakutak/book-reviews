@@ -7,6 +7,7 @@ import { ContainerExplorer,
          FilterContainer,
          CardContainer } from './styles';
 import CardExplorer from './(components)/Card';
+import { interfaceBook } from '../../interfaces/book';
 
 const Filters = [
     {
@@ -42,13 +43,6 @@ const Filters = [
         isActive: false
     }
 ]
-
-interface interfaceBook {
-    author: string,
-    cover_url: string,
-    id: string,
-    name: string
-}
 
 export default function Explorer() {
 
