@@ -6,11 +6,17 @@ export default async function Ratings(req: NextApiRequest, res: NextApiResponse)
         return res.status(405).end();
     }
 
-    const idBook = req.query;
+    const { id_book } = req.query;
+
+    if(!id_book) {
+        return res.status(400).json({ message: 'Id book not provided.' })
+    }
+
+    const referenceBook = String(id_book);
 
     const ratings = await prisma.rating.findMany({
         where: {
-            book_id: idBook
+            book_id: referenceBook
         }
     });
 

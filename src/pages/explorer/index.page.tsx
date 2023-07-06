@@ -46,7 +46,7 @@ const Filters = [
 
 export default function Explorer() {
 
-    const {data: books, isLoading} = useQuery([], async () => {
+    const {data: books, isLoading} = useQuery(['books'], async () => {
         const response = await api.get('/books');
         return response.data;
     });

@@ -14,7 +14,7 @@ export default function CardExplorer({ name, author, cover_url, id }: interfaceB
                     <p>{ author }</p>
                 </header>
                 <footer>
-                    <Ratings id={id} />
+                    <Ratings book_id={id} />
                 </footer>
             </section>
         </Card>
