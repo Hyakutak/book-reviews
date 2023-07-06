@@ -30,7 +30,7 @@ export default function Ratings({ book_id }: BookId) {
     const average = total / ratings.length;
 
     const stars = [...Array(5)].map(( _, index) => (
-        <Star key={`star${index}`} size={16} weight={index <= average  ? 'fill' : 'regular'} />
+        <Star key={`star${index}`} size={16} weight={average <= index ? 'regular' : 'fill'} />
     ));
     
     return(
