@@ -9,46 +9,15 @@ import { ContainerExplorer,
 import CardExplorer from './(components)/Card';
 import { interfaceBook } from '../../interfaces/book';
 
-const Filters = [
-    {
-        name: 'Tudo',
-        isActive: true
-    },
-    {
-        name: 'Computação',
-        isActive: false
-    },
-    {
-        name: 'Educação',
-        isActive: false
-    },
-    {
-        name: 'Fantasia',
-        isActive: false
-    },
-    {
-        name: 'Ficção científica',
-        isActive: false
-    },
-    {
-        name: 'Horror',
-        isActive: false
-    },
-    {
-        name: 'HQs',
-        isActive: false
-    },
-    {
-        name: 'Suspense',
-        isActive: false
-    }
-]
-
 export default function Explorer() {
 
     const {data: books, isLoading} = useQuery(['books'], async () => {
         const response = await api.get('/books');
         return response.data;
+    });
+
+    const { data: allCategory } = useQuery(['allCategory'],async () => {
+        const response = await api.get('/')
     });
 
     const cardsBook = isLoading ? (
@@ -57,9 +26,7 @@ export default function Explorer() {
         books.map((book: interfaceBook) => <CardExplorer key={book.id} {...book} />) 
     );
 
-    const FilterList = Filters.map(({ name, isActive }) => {
-        return <button key={name} className={isActive ? 'active' : ''}>{ name }</button>
-    });
+    //<button key={name} className={isActive ? 'active' : ''}>{ name }</button>
 
     return(
         <ContainerExplorer>
@@ -74,7 +41,7 @@ export default function Explorer() {
                 </InputFilter>
             </header>
             <FilterContainer>
-                { FilterList }
+                
             </FilterContainer>
             <CardContainer>
                 { cardsBook }
