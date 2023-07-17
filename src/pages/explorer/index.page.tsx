@@ -8,6 +8,7 @@ import { ContainerExplorer,
          CardContainer } from './styles';
 import CardExplorer from './(components)/Card';
 import { interfaceBook } from '../../interfaces/book';
+import LoadingBox from '@/components/LoadingBox';
 
 export default function Explorer() {
 
@@ -21,7 +22,7 @@ export default function Explorer() {
     });
 
     const cardsBook = isLoading ? (
-        <span>Carregando</span>
+        <LoadingBox />
     ) : (
         books.map((book: interfaceBook) => <CardExplorer key={book.id} {...book} />) 
     );
